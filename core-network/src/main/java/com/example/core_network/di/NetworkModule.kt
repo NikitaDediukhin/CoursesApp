@@ -1,8 +1,9 @@
 package com.example.core_network.di
 
+import com.example.core_network.api.CoursesApi
 import dagger.Module
 import dagger.Provides
-import jakarta.inject.Singleton
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,5 +27,11 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCoursesApi(retrofit: Retrofit): CoursesApi {
+        return retrofit.create(CoursesApi::class.java)
     }
 }
