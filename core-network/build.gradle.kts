@@ -36,10 +36,10 @@ kotlin {
 }
 
 dependencies {
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.okhttp)
-    implementation(libs.logging.interceptor)
+    api(libs.okhttp)
+    api(libs.logging.interceptor)
+    api(libs.retrofit)
+    api(libs.converter.gson)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 }

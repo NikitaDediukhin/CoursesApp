@@ -4,6 +4,7 @@ dagger = "2.59.2"
 daggerCompiler = "2.59.2"
 fragmentKtx = "1.8.9"
 kotlin = "2.3.20"
+ksp = "2.3.6"
 coreKtx = "1.18.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
@@ -47,4 +48,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-kapt = { id = "kotlin-kapt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 

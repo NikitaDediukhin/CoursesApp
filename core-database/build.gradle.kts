@@ -1,7 +1,10 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -31,8 +34,9 @@ android {
 }
 
 kotlin {
+    jvmToolchain(17)
     compilerOptions {
-        jvmToolchain(17)
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
@@ -42,5 +46,5 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 }
