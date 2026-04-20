@@ -57,4 +57,6 @@ dependencies {
     implementation(project(":feature-login"))
     implementation(project(":feature-main"))
     implementation(project(":core-ui"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
 }
