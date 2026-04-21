@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.feature_main.databinding.FragmentMainBinding
 import com.example.feature_main.di.MainComponentViewModel
+import com.example.feature_main.presentation.adapter.CoursesAdapter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,11 +27,13 @@ class MainFragment : Fragment() {
     lateinit var viewModelFactory: MainViewModelFactory
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var coursesAdapter: CoursesAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         ViewModelProvider(this)[MainComponentViewModel::class.java]
-            .mainComponent.inject(this)
+            .mainComponent
+            .inject(this)
     }
 
     override fun onCreateView(
@@ -44,6 +48,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecyclerView()
+
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
         observeState()
@@ -53,18 +59,33 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun setupRecyclerView() {
+        coursesAdapter = CoursesAdapter(
+            onFavoriteClick = { course ->
+                viewModel.onFavoriteClick(course)
+            }
+        )
+
+        binding.coursesRecyclerView.apply {
+            adapter = coursesAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
     private fun observeState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { state ->
                 binding.progressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
                 binding.errorTextView.visibility = if (state.error != null) View.VISIBLE else View.GONE
-                binding.errorTextView.text = state.error ?: ""
-                binding.coursesTextView.text = state.courses.joinToString("\n\n") { it.title }
+                binding.errorTextView.text = state.error.orEmpty()
+
+                coursesAdapter.submitList(state.courses)
             }
         }
     }
 
     override fun onDestroyView() {
+        binding.coursesRecyclerView.adapter = null
         super.onDestroyView()
         _binding = null
     }
