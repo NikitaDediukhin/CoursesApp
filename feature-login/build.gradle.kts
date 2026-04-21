@@ -45,4 +45,5 @@ dependencies {
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
     implementation(project(":core-ui"))
+    implementation(project(":feature-main"))
 }

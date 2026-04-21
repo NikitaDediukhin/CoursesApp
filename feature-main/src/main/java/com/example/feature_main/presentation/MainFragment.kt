@@ -68,4 +68,8 @@ class MainFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    companion object {
+        fun newInstance(): MainFragment = MainFragment()
+    }
 }

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.feature_main.presentation.MainFragment
 import com.exapmple.feature_login.presentation.LoginFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LoginFragment.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,8 +13,15 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, LoginFragment())
+                .replace(R.id.fragmentContainer, LoginFragment.newInstance())
                 .commit()
         }
+    }
+
+    override fun onLoginSuccess() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, MainFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 }
