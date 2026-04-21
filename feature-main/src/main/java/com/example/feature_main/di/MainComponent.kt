@@ -1,5 +1,6 @@
 package com.example.feature_main.di
 
+import com.example.feature_main.presentation.FavoritesFragment
 import com.example.feature_main.presentation.MainFragment
 import dagger.Component
 
@@ -11,6 +12,7 @@ import dagger.Component
 interface MainComponent {
 
     fun inject(fragment: MainFragment)
+    fun inject(fragment: FavoritesFragment)
 
     @Component.Factory
     interface Factory {
