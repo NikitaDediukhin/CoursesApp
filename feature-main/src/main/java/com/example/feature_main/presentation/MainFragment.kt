@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
 import com.example.feature_main.databinding.FragmentMainBinding
 import com.example.feature_main.di.MainComponentViewModel
@@ -17,7 +16,10 @@ import javax.inject.Inject
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentMainBinding
+        get() = requireNotNull(_binding) {
+            "Binding is not initialized or already cleared"
+        }
 
     @Inject
     lateinit var viewModelFactory: MainViewModelFactory
