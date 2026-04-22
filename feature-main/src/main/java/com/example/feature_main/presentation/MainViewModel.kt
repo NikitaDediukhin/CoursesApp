@@ -33,7 +33,11 @@ class MainViewModel @Inject constructor(
                 .catch { throwable ->
                     _uiState.value = _uiState.value.copy(
                         isLoading = false,
-                        error = throwable.message
+                        error = if (_uiState.value.courses.isEmpty()) {
+                            throwable.message
+                        } else {
+                            null
+                        }
                     )
                 }
                 .collect { courses ->
@@ -48,12 +52,19 @@ class MainViewModel @Inject constructor(
 
     private fun syncCourses() {
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
+            if (_uiState.value.courses.isEmpty()) {
+                _uiState.value = _uiState.value.copy(isLoading = true)
+            }
+
             runCatching { syncCoursesUseCase() }
                 .onFailure { throwable ->
                     _uiState.value = _uiState.value.copy(
                         isLoading = false,
-                        error = throwable.message
+                        error = if (_uiState.value.courses.isEmpty()) {
+                            throwable.message
+                        } else {
+                            null
+                        }
                     )
                 }
         }
