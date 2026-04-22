@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Screen paddings -->
+    <dimen name="screen_padding_horizontal">16dp</dimen>
+    <dimen name="screen_padding_top">16dp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_28">28dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="radius_s">8dp</dimen>
+    <dimen name="radius_m">12dp</dimen>
+    <dimen name="radius_l">16dp</dimen>
+    <dimen name="radius_xl">20dp</dimen>
+
+    <dimen name="radius_card">16dp</dimen>
+    <dimen name="radius_rounded">28dp</dimen>
+    <dimen name="radius_pill">30dp</dimen>
+
+    <!-- Stroke -->
+    <dimen name="stroke_thin">1dp</dimen>
+    <dimen name="stroke_medium">1.5dp</dimen>
+
+    <!-- Auth -->
+    <dimen name="auth_input_height">40dp</dimen>
+    <dimen name="auth_input_padding_horizontal">16dp</dimen>
+    <dimen name="auth_input_content_gap">8dp</dimen>
+
+    <dimen name="auth_button_height">40dp</dimen>
+    <dimen name="auth_button_padding_horizontal">20dp</dimen>
+    <dimen name="auth_button_padding_vertical">14dp</dimen>
+    <dimen name="auth_button_content_gap">4dp</dimen>
+
+    <dimen name="social_button_height">40dp</dimen>
+
+    <!-- Auth spacing -->
+    <dimen name="auth_title_to_fields">28dp</dimen>
+    <dimen name="auth_field_group_gap">16dp</dimen>
+    <dimen name="auth_fields_to_submit">24dp</dimen>
+    <dimen name="auth_actions_to_divider">32dp</dimen>
+
+    <!-- Top bar -->
+    <dimen name="top_bar_height">60dp</dimen>
+    <dimen name="top_bar_padding">16dp</dimen>
+
+    <!-- Bottom navigation -->
+    <dimen name="bottom_nav_height">79dp</dimen>
+    <dimen name="bottom_nav_padding_horizontal">8dp</dimen>
+    <dimen name="bottom_nav_item_padding_top">12dp</dimen>
+    <dimen name="bottom_nav_item_padding_bottom">16dp</dimen>
+    <dimen name="bottom_nav_item_gap">8dp</dimen>
+    <dimen name="bottom_nav_item_icon_text_gap">4dp</dimen>
+
+    <!-- Search -->
+    <dimen name="search_field_height">56dp</dimen>
+    <dimen name="filter_button_size">56dp</dimen>
+
+    <!-- Course card -->
+    <dimen name="course_card_height">236dp</dimen>
+
+    <!-- Icon sizes -->
+    <dimen name="icon_size_xs">10dp</dimen>
+    <dimen name="icon_size_s">16dp</dimen>
+    <dimen name="icon_size_m">24dp</dimen>
+    <dimen name="icon_size_l">26dp</dimen>
+
+    <!-- Touch target -->
+    <dimen name="icon_touch_target">48dp</dimen>
+
+    <!-- Brand icons -->
+    <dimen name="icon_vk_width">26dp</dimen>
+    <dimen name="icon_vk_height">16dp</dimen>
+
+    <dimen name="icon_ok_width">15dp</dimen>
+    <dimen name="icon_ok_height">26dp</dimen>
+
+    <dimen name="icon_bookmark_width">11dp</dimen>
+    <dimen name="icon_bookmark_height">13dp</dimen>
+
+</resources>
