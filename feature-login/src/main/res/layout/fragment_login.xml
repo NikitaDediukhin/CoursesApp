@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/titleTextView"
-        style="@style/Widget.App.TextView.TopBarTitle"
+        style="@style/AppTextViewTopBarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/emailLabelTextView"
-        style="@style/Widget.App.TextView.InputLabel"
+        style="@style/AppTextViewInputLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/auth_title_to_fields"
@@ -44,7 +44,7 @@
 
     <TextView
         android:id="@+id/passwordLabelTextView"
-        style="@style/Widget.App.TextView.InputLabel"
+        style="@style/AppTextViewInputLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/auth_field_group_gap"
@@ -91,10 +91,11 @@
 
         <TextView
             android:id="@+id/noAccountTextView"
-            style="@style/TextAppearance.App.BodySmall"
+            style="@style/TextAppearance.App.ButtonSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Нету аккаунта?" />
+            android:text="Нету аккаунта?"
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/registrationTextView"
@@ -128,9 +129,9 @@
         android:layout_height="@dimen/stroke_thin"
         android:layout_marginTop="@dimen/space_32"
         android:background="@drawable/bg_divider"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordTextView" />
 
     <LinearLayout
         android:id="@+id/socialButtonsRow"
@@ -146,7 +147,7 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/vkButton"
-            style="@style/Widget.App.Button.SocialIcon"
+            style="@style/AppButtonSocialIcon"
             android:layout_width="0dp"
             android:layout_height="@dimen/social_button_height"
             android:layout_weight="1"
@@ -157,7 +158,7 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/okButton"
-            style="@style/Widget.App.Button.SocialIcon"
+            style="@style/AppButtonSocialIcon"
             android:layout_width="0dp"
             android:layout_height="@dimen/social_button_height"
             android:layout_weight="1"

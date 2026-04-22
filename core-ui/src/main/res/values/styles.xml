@@ -21,6 +21,7 @@
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">20sp</item>
+        <item name="android:letterSpacing">0</item>
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
@@ -75,7 +76,7 @@
         <item name="iconPadding">@dimen/auth_button_content_gap</item>
     </style>
 
-    <style name="Widget.App.Button.SocialIcon" parent="">
+    <style name="AppButtonSocialIcon">
         <item name="android:layout_height">@dimen/social_button_height</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:padding">0dp</item>
@@ -99,15 +100,16 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textAppearance">@style/TextAppearance.App.BodyMedium</item>
     </style>
 
-    <style name="Widget.App.TextView.TopBarTitle" parent="">
+    <style name="AppTextViewTopBarTitle">
         <item name="android:textAppearance">@style/TextAppearance.App.Headline</item>
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
-    <style name="Widget.App.TextView.InputLabel" parent="">
+    <style name="AppTextViewInputLabel">
         <item name="android:textAppearance">@style/TextAppearance.App.TitleMedium</item>
         <item name="android:textColor">@color/text_primary</item>
     </style>
