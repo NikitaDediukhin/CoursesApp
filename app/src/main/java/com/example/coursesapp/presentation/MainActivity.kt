@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.coursesapp.R
 import com.example.feature_main.presentation.FavoritesFragment
 import com.example.feature_main.presentation.MainFragment
-import com.exapmple.feature_login.presentation.LoginFragment
+import com.example.feature_login.presentation.LoginFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), LoginFragment.Listener {
