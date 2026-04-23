@@ -117,7 +117,10 @@
 
     <style name="ShapeAppearanceOverlayAppCourseImage">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/radius_m</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_card</item>
+        <item name="cornerSizeTopRight">@dimen/radius_card</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_m</item>
+        <item name="cornerSizeBottomRight">@dimen/radius_m</item>
     </style>
 
 

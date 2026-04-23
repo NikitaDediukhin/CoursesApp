@@ -1,34 +1,124 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_primary">
 
-    <Button
+    <LinearLayout
         android:id="@+id/sortButton"
         android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginEnd="@dimen/screen_padding_horizontal"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/searchRow"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/sortTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="По дате добавления"
+            android:textColor="@color/accent_primary"
+            android:textAppearance="@style/TextAppearance.App.Button" />
+
+        <ImageView
+            android:id="@+id/sortIconImageView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="@dimen/space_4"
+            android:src="@drawable/arrow_down_up"
+            app:tint="@color/accent_primary"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/searchRow"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sort" />
+        android:layout_marginStart="@dimen/screen_padding_horizontal"
+        android:layout_marginTop="@dimen/screen_padding_top"
+        android:layout_marginEnd="@dimen/screen_padding_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/search_field_height"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/space_8"
+            android:background="@drawable/bg_search_field"
+            android:drawableStart="@drawable/search"
+            android:drawablePadding="@dimen/space_4"
+            android:gravity="center_vertical"
+            android:hint="Search courses..."
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/filterButton"
+            style="@style/AppButtonSocialIcon"
+            android:layout_width="@dimen/filter_button_size"
+            android:layout_height="@dimen/filter_button_size"
+            android:background="@drawable/bg_search_field"
+            android:contentDescription="Filter"
+            app:srcCompat="@drawable/funnel" />
+    </LinearLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/coursesRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginStart="@dimen/screen_padding_horizontal"
+        android:layout_marginEnd="@dimen/screen_padding_horizontal"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/sortButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/coursesRecyclerView"
+        app:layout_constraintBottom_toBottomOf="@id/coursesRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/coursesRecyclerView"
+        app:layout_constraintEnd_toEndOf="@id/coursesRecyclerView" />
 
     <TextView
         android:id="@+id/errorTextView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:visibility="gone" />
+        android:layout_marginStart="@dimen/screen_padding_horizontal"
+        android:layout_marginEnd="@dimen/screen_padding_horizontal"
+        android:layout_marginTop="@dimen/space_16"
+        android:textColor="@color/text_primary"
+        android:textAppearance="@style/TextAppearance.App.BodySmall"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/sortButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coursesRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

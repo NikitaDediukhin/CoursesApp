@@ -1,69 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    android:background="#1E1F22"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="@dimen/course_card_height"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="@dimen/space_16"
+    android:background="@drawable/bg_course_card">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/courseImageView"
+        android:layout_width="0dp"
+        android:layout_height="114dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayAppCourseImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/course_placeholder_1"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/likeButton"
+        style="@style/AppButtonSocialIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_marginEnd="@dimen/space_8"
+        android:background="@drawable/bg_bookmark_button"
+        android:contentDescription="Bookmark"
+        app:layout_constraintTop_toTopOf="@id/courseImageView"
+        app:layout_constraintEnd_toEndOf="@id/courseImageView"
+        app:srcCompat="@drawable/bookmark_fill" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:id="@+id/metaRow"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="@dimen/space_8"
+        android:layout_marginBottom="@dimen/space_8"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/courseImageView"
+        app:layout_constraintBottom_toBottomOf="@id/courseImageView">
+
+        <LinearLayout
+            android:id="@+id/ratingChip"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:background="@drawable/bg_course_chip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="6dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="4dp">
+
+            <ImageView
+                android:id="@+id/ratingStarImageView"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="@dimen/space_4"
+                android:src="@drawable/star_fill"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/rateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.App.Caption"
+                android:textColor="@color/text_primary"
+                tools:text="4.9"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/startDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginStart="@dimen/space_4"
+            android:background="@drawable/bg_course_chip"
+            android:gravity="center_vertical"
+            android:paddingStart="6dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="4dp"
+            android:textAppearance="@style/TextAppearance.App.Caption"
+            android:textColor="@color/text_primary"
+            android:includeFontPadding="false"
+            tools:text="22 Мая 2024"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="@dimen/space_16"
+        android:paddingTop="@dimen/space_16"
+        android:paddingEnd="12dp"
+        android:paddingBottom="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/courseImageView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:includeFontPadding="false"
+            android:textAppearance="@style/TextAppearance.App.TitleMedium"
+            android:textColor="@color/text_primary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Java-разработчик с нуля"/>
 
-        <ImageButton
-            android:id="@+id/likeButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="favorite"
-            android:src="@android:drawable/btn_star_big_off" />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:alpha="0.7"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/TextAppearance.App.BodySmall"
+            android:textColor="@color/text_primary"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании."/>
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textColor="#CFCFCF"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/TextAppearance.App.TitleMedium"
+            android:textColor="@color/text_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="999 ₽"/>
 
-    <TextView
-        android:id="@+id/priceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/moreContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/priceTextView"
+            app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/rateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="#CFCFCF"
-        android:textSize="14sp" />
+            <TextView
+                android:id="@+id/moreTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Подробнее"
+                android:includeFontPadding="false"
+                android:textAppearance="@style/TextAppearance.App.ButtonSmall"
+                android:textColor="@color/accent_primary" />
 
-    <TextView
-        android:id="@+id/startDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="#CFCFCF"
-        android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/moreArrowImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_right_short_fill"
+                app:tint="@color/accent_primary"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
