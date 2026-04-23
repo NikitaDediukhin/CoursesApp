@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="date_sort">По дате добавления</string>
+    <string name="search_courses_hint">Search courses...</string>
+    <string name="filter">Filter</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="more">Подробнее</string>
+    <string name="price_format">%1$s ₽</string>
+</resources>

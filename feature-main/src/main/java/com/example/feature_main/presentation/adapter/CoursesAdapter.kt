@@ -32,9 +32,14 @@ class CoursesAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(course: Course) = with(binding) {
+            val context = root.context
+
             titleTextView.text = course.title
             descriptionTextView.text = course.text
-            priceTextView.text = "${course.price} ₽"
+            priceTextView.text = context.getString(
+                com.example.feature_main.R.string.price_format,
+                course.price
+            )
             rateTextView.text = "${course.rate}"
             startDateTextView.text = formatCourseDate(course.startDate)
 

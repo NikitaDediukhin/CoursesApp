@@ -27,7 +27,7 @@
         android:layout_marginTop="@dimen/space_8"
         android:layout_marginEnd="@dimen/space_8"
         android:background="@drawable/bg_bookmark_button"
-        android:contentDescription="Bookmark"
+        android:contentDescription="@string/bookmark"
         app:layout_constraintTop_toTopOf="@id/courseImageView"
         app:layout_constraintEnd_toEndOf="@id/courseImageView"
         app:srcCompat="@drawable/ic_bookmark_filled" />
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="Подробнее"
+                android:text="@string/more"
                 android:textAppearance="@style/TextAppearance.App.ButtonSmall"
                 android:textColor="@color/accent_primary" />
 
