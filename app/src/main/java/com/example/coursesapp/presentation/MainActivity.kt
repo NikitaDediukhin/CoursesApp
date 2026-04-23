@@ -3,6 +3,8 @@ package com.example.coursesapp.presentation
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.coursesapp.R
 import com.example.feature_main.presentation.FavoritesFragment
 import com.example.feature_main.presentation.MainFragment
@@ -18,6 +20,19 @@ class MainActivity : AppCompatActivity(), LoginFragment.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fragmentContainer)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            view.setPadding(
+                0,
+                systemBars.top,
+                0,
+                0
+            )
+
+            insets
+        }
 
         setupBottomNavigation()
 
