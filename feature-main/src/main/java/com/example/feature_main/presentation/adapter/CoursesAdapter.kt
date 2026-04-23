@@ -1,11 +1,13 @@
 package com.example.feature_main.presentation.adapter
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core_ui.R
 import com.example.feature_main.databinding.ItemCourseBinding
 import com.example.feature_main.domain.model.Course
 import com.example.feature_main.presentation.resolveCourseImage
@@ -31,24 +33,30 @@ class CoursesAdapter(
         fun bind(course: Course) = with(binding) {
             titleTextView.text = course.title
             descriptionTextView.text = course.text
-            priceTextView.text = "Цена: ${course.price}"
-            rateTextView.text = "Рейтинг: ${course.rate}"
-            startDateTextView.text = "Старт: ${course.startDate}"
+            priceTextView.text = "${course.price} ₽"
+            rateTextView.text = "${course.rate}"
+            startDateTextView.text = "${course.startDate}"
 
             courseImageView.setImageResource(resolveCourseImage(course.id))
 
-            val colorRes = if (course.hasLike) {
-                android.R.color.holo_green_light
-            } else {
-                android.R.color.darker_gray
-            }
-
-            likeButton.setColorFilter(
-                ContextCompat.getColor(binding.root.context, colorRes)
-            )
+            bindBookmarkState(course)
 
             likeButton.setOnClickListener {
                 onFavoriteClick(course)
+            }
+        }
+
+        private fun bindBookmarkState(course: Course) = with(binding.likeButton) {
+            if (course.hasLike) {
+                setImageResource(R.drawable.ic_bookmark_filled)
+                imageTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(context, R.color.accent_primary)
+                )
+            } else {
+                setImageResource(R.drawable.ic_bookmark_outlined)
+                imageTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(context, R.color.text_primary)
+                )
             }
         }
     }

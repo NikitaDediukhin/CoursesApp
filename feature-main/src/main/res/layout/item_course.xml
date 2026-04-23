@@ -30,7 +30,7 @@
         android:contentDescription="Bookmark"
         app:layout_constraintTop_toTopOf="@id/courseImageView"
         app:layout_constraintEnd_toEndOf="@id/courseImageView"
-        app:srcCompat="@drawable/bookmark_fill" />
+        app:srcCompat="@drawable/ic_bookmark_filled" />
 
     <LinearLayout
         android:id="@+id/metaRow"
@@ -112,35 +112,34 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Java-разработчик с нуля"/>
+            tools:text="Java-разработчик с нуля" />
 
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_marginTop="12dp"
             android:alpha="0.7"
             android:ellipsize="end"
-            android:maxLines="2"
             android:includeFontPadding="false"
+            android:maxLines="2"
             android:textAppearance="@style/TextAppearance.App.BodySmall"
             android:textColor="@color/text_primary"
             app:layout_constraintTop_toBottomOf="@id/titleTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании."/>
+            tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven..." />
 
         <TextView
             android:id="@+id/priceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:includeFontPadding="false"
             android:textAppearance="@style/TextAppearance.App.TitleMedium"
             android:textColor="@color/text_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="999 ₽"/>
+            tools:text="999 ₽" />
 
         <LinearLayout
             android:id="@+id/moreContainer"
@@ -155,8 +154,8 @@
                 android:id="@+id/moreTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Подробнее"
                 android:includeFontPadding="false"
+                android:text="Подробнее"
                 android:textAppearance="@style/TextAppearance.App.ButtonSmall"
                 android:textColor="@color/accent_primary" />
 
