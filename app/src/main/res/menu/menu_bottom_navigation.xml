@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/menu_main"
-        android:icon="@android:drawable/ic_menu_view"
+        android:icon="@drawable/ic_nav_house"
         android:title="Главная" />
 
     <item
         android:id="@+id/menu_favorites"
-        android:icon="@android:drawable/btn_star_big_off"
+        android:icon="@drawable/ic_nav_favorite"
         android:title="Избранное" />
 
     <item
         android:id="@+id/menu_account"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@drawable/ic_nav_person"
         android:title="Аккаунт" />
 </menu>

@@ -123,5 +123,39 @@
         <item name="cornerSizeBottomRight">@dimen/radius_m</item>
     </style>
 
+    <style name="Widget.App.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@drawable/bg_bottom_navigation</item>
+        <item name="itemIconTint">@color/text_primary</item>
+        <item name="itemTextColor">@color/text_primary</item>
+        <item name="itemTextAppearanceActive">@style/AppTextAppearanceBottomNav</item>
+        <item name="itemTextAppearanceInactive">@style/AppTextAppearanceBottomNav</item>
+        <item name="labelVisibilityMode">labeled</item>
+
+        <item name="itemActiveIndicatorStyle">@style/AppBottomNavigationActiveIndicator</item>
+        <item name="itemPaddingTop">@dimen/bottom_nav_item_padding_top</item>
+        <item name="itemPaddingBottom">@dimen/bottom_nav_item_padding_bottom</item>
+        <item name="itemIconSize">@dimen/icon_size_m</item>
+    </style>
+
+    <style name="AppBottomNavigationActiveIndicator">
+        <item name="android:width">64dp</item>
+        <item name="android:height">32dp</item>
+        <item name="android:color">@color/glass_overlay</item>
+        <item name="shapeAppearance">@style/ShapeAppearanceOverlayAppBottomNavIndicator</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlayAppBottomNavIndicator">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="AppTextAppearanceBottomNav" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/roboto_semibold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:letterSpacing">0.0333333</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
 
 </resources>
