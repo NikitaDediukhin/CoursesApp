@@ -11,6 +11,7 @@ import com.example.core_ui.R
 import com.example.feature_main.databinding.ItemCourseBinding
 import com.example.feature_main.domain.model.Course
 import com.example.feature_main.presentation.resolveCourseImage
+import com.example.feature_main.presentation.utils.formatCourseDate
 
 class CoursesAdapter(
     private val onFavoriteClick: (Course) -> Unit
@@ -35,7 +36,7 @@ class CoursesAdapter(
             descriptionTextView.text = course.text
             priceTextView.text = "${course.price} ₽"
             rateTextView.text = "${course.rate}"
-            startDateTextView.text = "${course.startDate}"
+            startDateTextView.text = formatCourseDate(course.startDate)
 
             courseImageView.setImageResource(resolveCourseImage(course.id))
 
