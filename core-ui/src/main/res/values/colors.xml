@@ -16,7 +16,7 @@
     <color name="border_default">#4D555E</color>
 
     <!-- Overlay -->
-    <color name="glass_overlay">#4D32333A</color>
+    <color name="glass_overlay">#32333A4D</color>
 
     <!-- Brand -->
     <color name="brand_vk">#2683ED</color>
