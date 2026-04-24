@@ -31,8 +31,15 @@ class CoursesAdapter(
         private val binding: ItemCourseBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
+        private var blurConfigured = false
+
         fun bind(course: Course) = with(binding) {
             val context = root.context
+
+            if (!blurConfigured) {
+                setupBlur()
+                blurConfigured = true
+            }
 
             titleTextView.text = course.title
             descriptionTextView.text = course.text
@@ -40,7 +47,7 @@ class CoursesAdapter(
                 com.example.feature_main.R.string.price_format,
                 course.price
             )
-            rateTextView.text = "${course.rate}"
+            rateTextView.text = course.rate
             startDateTextView.text = formatCourseDate(course.startDate)
 
             courseImageView.setImageResource(resolveCourseImage(course.id))
@@ -64,6 +71,30 @@ class CoursesAdapter(
                     ContextCompat.getColor(context, R.color.text_primary)
                 )
             }
+        }
+
+        private fun setupBlur() = with(binding) {
+            val windowBackground = itemView.rootView.background
+            val blurRadius = 16f
+
+            bookmarkBlurView
+                .setupWith(blurTarget)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurRadius(blurRadius)
+
+            ratingBlurView
+                .setupWith(blurTarget)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurRadius(blurRadius)
+
+            dateBlurView
+                .setupWith(blurTarget)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurRadius(blurRadius)
+
+            ratingBlurView.clipToOutline = true
+            dateBlurView.clipToOutline = true
+            bookmarkBlurView.clipToOutline = true
         }
     }
 

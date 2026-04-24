@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.blurview)
     implementation(libs.material)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
