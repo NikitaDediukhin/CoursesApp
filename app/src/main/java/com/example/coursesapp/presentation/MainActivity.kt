@@ -9,6 +9,7 @@ import com.example.coursesapp.R
 import com.example.coursesapp.presentation.navigation.AppNavigator
 import com.example.feature_login.presentation.LoginFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.core.view.isVisible
 
 
 class MainActivity : AppCompatActivity(), LoginFragment.Listener {
@@ -29,12 +30,34 @@ class MainActivity : AppCompatActivity(), LoginFragment.Listener {
         setupBottomNavigation()
 
         if (savedInstanceState == null) {
-            showBottomNavigation(false)
-            navigator.openLogin()
+            showLogin()
+        } else {
+            val isBottomNavigationVisible = savedInstanceState.getBoolean(
+                KEY_BOTTOM_NAV_VISIBLE,
+                false
+            )
+            showBottomNavigation(isBottomNavigationVisible)
         }
     }
 
     override fun onLoginSuccess() {
+        showMain()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(
+            KEY_BOTTOM_NAV_VISIBLE,
+            bottomNavigationView.isVisible
+        )
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun showLogin() {
+        showBottomNavigation(false)
+        navigator.openLogin()
+    }
+
+    private fun showMain() {
         showBottomNavigation(true)
         bottomNavigationView.selectedItemId = R.id.menu_main
     }
@@ -72,5 +95,9 @@ class MainActivity : AppCompatActivity(), LoginFragment.Listener {
 
     private fun showBottomNavigation(isVisible: Boolean) {
         bottomNavigationView.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
+
+    companion object {
+        private const val KEY_BOTTOM_NAV_VISIBLE = "KEY_BOTTOM_NAV_VISIBLE"
     }
 }
