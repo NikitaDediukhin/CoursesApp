@@ -134,7 +134,7 @@
         <item name="itemActiveIndicatorStyle">@style/AppBottomNavigationActiveIndicator</item>
         <item name="itemPaddingTop">@dimen/bottom_nav_item_padding_top</item>
         <item name="itemPaddingBottom">@dimen/bottom_nav_item_padding_bottom</item>
-        <item name="itemIconSize">@dimen/icon_size_m</item>
+        <item name="itemIconSize">@dimen/icon_size_l</item>
     </style>
 
     <style name="AppBottomNavigationActiveIndicator">

@@ -7,6 +7,7 @@
 
     <!-- Spacing -->
     <dimen name="space_4">4dp</dimen>
+    <dimen name="space_6">6dp</dimen>
     <dimen name="space_8">8dp</dimen>
     <dimen name="space_12">12dp</dimen>
     <dimen name="space_16">16dp</dimen>
@@ -65,24 +66,19 @@
 
     <!-- Course card -->
     <dimen name="course_card_height">236dp</dimen>
+    <dimen name="course_description_height">32dp</dimen>
+    <dimen name="chip_height">22dp</dimen>
+    <dimen name="bookmark_button_size">28dp</dimen>
+    <dimen name="course_image_height">114dp</dimen>
 
     <!-- Icon sizes -->
     <dimen name="icon_size_xs">10dp</dimen>
-    <dimen name="icon_size_s">16dp</dimen>
-    <dimen name="icon_size_m">24dp</dimen>
-    <dimen name="icon_size_l">26dp</dimen>
+    <dimen name="icon_size_s">12dp</dimen>
+    <dimen name="icon_size_m">16dp</dimen>
+    <dimen name="icon_size_l">24dp</dimen>
+    <dimen name="icon_size_xl">26dp</dimen>
 
     <!-- Touch target -->
     <dimen name="icon_touch_target">48dp</dimen>
-
-    <!-- Brand icons -->
-    <dimen name="icon_vk_width">26dp</dimen>
-    <dimen name="icon_vk_height">16dp</dimen>
-
-    <dimen name="icon_ok_width">15dp</dimen>
-    <dimen name="icon_ok_height">26dp</dimen>
-
-    <dimen name="icon_bookmark_width">11dp</dimen>
-    <dimen name="icon_bookmark_height">13dp</dimen>
 
 </resources>

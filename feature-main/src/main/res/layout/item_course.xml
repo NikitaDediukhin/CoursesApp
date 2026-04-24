@@ -10,7 +10,7 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/courseImageView"
         android:layout_width="0dp"
-        android:layout_height="114dp"
+        android:layout_height="@dimen/course_image_height"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayAppCourseImage"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,8 +22,8 @@
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/likeButton"
         style="@style/AppButtonSocialIcon"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="@dimen/bookmark_button_size"
+        android:layout_height="@dimen/bookmark_button_size"
         android:layout_marginTop="@dimen/space_8"
         android:layout_marginEnd="@dimen/space_8"
         android:background="@drawable/bg_bookmark_button"
@@ -35,7 +35,7 @@
     <LinearLayout
         android:id="@+id/metaRow"
         android:layout_width="wrap_content"
-        android:layout_height="22dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_8"
         android:layout_marginBottom="@dimen/space_8"
         android:orientation="horizontal"
@@ -45,19 +45,19 @@
         <LinearLayout
             android:id="@+id/ratingChip"
             android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_height="@dimen/chip_height"
             android:background="@drawable/bg_course_chip"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="6dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="6dp"
-            android:paddingBottom="4dp">
+            android:paddingStart="@dimen/space_6"
+            android:paddingTop="@dimen/space_4"
+            android:paddingEnd="@dimen/space_6"
+            android:paddingBottom="@dimen/space_4">
 
             <ImageView
                 android:id="@+id/ratingStarImageView"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="@dimen/icon_size_s"
+                android:layout_height="@dimen/icon_size_s"
                 android:layout_marginEnd="@dimen/space_4"
                 android:src="@drawable/star_fill"
                 tools:ignore="ContentDescription" />
@@ -66,27 +66,27 @@
                 android:id="@+id/rateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:includeFontPadding="false"
                 android:textAppearance="@style/TextAppearance.App.Caption"
                 android:textColor="@color/text_primary"
-                tools:text="4.9"
-                android:includeFontPadding="false"/>
+                tools:text="4.9" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/startDateTextView"
             android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_height="@dimen/chip_height"
             android:layout_marginStart="@dimen/space_4"
             android:background="@drawable/bg_course_chip"
             android:gravity="center_vertical"
-            android:paddingStart="6dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="6dp"
-            android:paddingBottom="4dp"
+            android:includeFontPadding="false"
+            android:paddingStart="@dimen/space_6"
+            android:paddingTop="@dimen/space_4"
+            android:paddingEnd="@dimen/space_6"
+            android:paddingBottom="@dimen/space_4"
             android:textAppearance="@style/TextAppearance.App.Caption"
             android:textColor="@color/text_primary"
-            android:includeFontPadding="false"
-            tools:text="22 Мая 2024"/>
+            tools:text="22 Мая 2024" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,12 +95,12 @@
         android:layout_height="0dp"
         android:paddingStart="@dimen/space_16"
         android:paddingTop="@dimen/space_16"
-        android:paddingEnd="12dp"
+        android:paddingEnd="@dimen/space_12"
         android:paddingBottom="@dimen/space_16"
-        app:layout_constraintTop_toBottomOf="@id/courseImageView"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/courseImageView">
 
         <TextView
             android:id="@+id/titleTextView"
@@ -109,25 +109,25 @@
             android:includeFontPadding="false"
             android:textAppearance="@style/TextAppearance.App.TitleMedium"
             android:textColor="@color/text_primary"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Java-разработчик с нуля" />
 
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="12dp"
+            android:layout_height="@dimen/course_description_height"
+            android:layout_marginTop="@dimen/space_12"
             android:alpha="0.7"
             android:ellipsize="end"
             android:includeFontPadding="false"
             android:maxLines="2"
             android:textAppearance="@style/TextAppearance.App.BodySmall"
             android:textColor="@color/text_primary"
-            app:layout_constraintTop_toBottomOf="@id/titleTextView"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
             tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven..." />
 
         <TextView
@@ -161,8 +161,8 @@
 
             <ImageView
                 android:id="@+id/moreArrowImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="@dimen/icon_size_m"
+                android:layout_height="@dimen/icon_size_m"
                 android:src="@drawable/arrow_right_short_fill"
                 app:tint="@color/accent_primary"
                 tools:ignore="ContentDescription" />
