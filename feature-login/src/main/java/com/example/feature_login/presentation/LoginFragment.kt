@@ -38,6 +38,7 @@ class LoginFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         listener = context as? Listener
+            ?: error("${context::class.java.simpleName} must implement LoginFragment.Listener")
     }
 
     override fun onCreateView(
@@ -67,11 +68,11 @@ class LoginFragment : Fragment() {
         }
 
         binding.vkButton.setOnClickListener {
-            openUrl("https://vk.com/")
+            openUrl(VK_URL)
         }
 
         binding.okButton.setOnClickListener {
-            openUrl("https://ok.ru/")
+            openUrl(OK_URL)
         }
     }
 
@@ -84,9 +85,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun isValidEmail(email: String): Boolean {
-        if (email.isBlank()) return false
-        if (email.any { it in 'А'..'я' || it == 'ё' || it == 'Ё' }) return false
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        return email.isNotBlank() &&
+                !email.containsCyrillic() &&
+                Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun String.containsCyrillic(): Boolean {
+        return any { it in 'А'..'я' || it == 'ё' || it == 'Ё' }
     }
 
     private fun openUrl(url: String) {
@@ -106,6 +111,8 @@ class LoginFragment : Fragment() {
     }
 
     companion object {
+        private const val VK_URL = "https://vk.com/"
+        private const val OK_URL = "https://ok.ru/"
         fun newInstance(): LoginFragment = LoginFragment()
     }
 }
