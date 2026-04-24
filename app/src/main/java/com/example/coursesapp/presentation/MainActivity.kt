@@ -6,12 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.coursesapp.R
-import com.example.feature_main.presentation.FavoritesFragment
-import com.example.feature_main.presentation.MainFragment
+import com.example.coursesapp.presentation.navigation.AppNavigator
 import com.example.feature_login.presentation.LoginFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+
 class MainActivity : AppCompatActivity(), LoginFragment.Listener {
+
+    private val navigator by lazy {
+        AppNavigator(supportFragmentManager)
+    }
 
     private val bottomNavigationView by lazy {
         findViewById<BottomNavigationView>(R.id.bottomNavigationView)
@@ -21,26 +25,25 @@ class MainActivity : AppCompatActivity(), LoginFragment.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fragmentContainer)) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            view.setPadding(
-                0,
-                systemBars.top,
-                0,
-                0
-            )
-
-            insets
-        }
-
+        setupWindowInsets()
         setupBottomNavigation()
 
         if (savedInstanceState == null) {
-            bottomNavigationView.visibility = View.GONE
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, LoginFragment.newInstance())
-                .commit()
+            showBottomNavigation(false)
+            navigator.openLogin()
+        }
+    }
+
+    override fun onLoginSuccess() {
+        showBottomNavigation(true)
+        bottomNavigationView.selectedItemId = R.id.menu_main
+    }
+
+    private fun setupWindowInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fragmentContainer)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(0, systemBars.top, 0, 0)
+            insets
         }
     }
 
@@ -48,17 +51,17 @@ class MainActivity : AppCompatActivity(), LoginFragment.Listener {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_main -> {
-                    openMain()
+                    navigator.openMain()
                     true
                 }
 
                 R.id.menu_favorites -> {
-                    openFavorites()
+                    navigator.openFavorites()
                     true
                 }
 
                 R.id.menu_account -> {
-                    openAccount()
+                    navigator.openAccount()
                     true
                 }
 
@@ -67,27 +70,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.Listener {
         }
     }
 
-    override fun onLoginSuccess() {
-        bottomNavigationView.visibility = View.VISIBLE
-        bottomNavigationView.selectedItemId = R.id.menu_main
-        openMain()
-    }
-
-    private fun openMain() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, MainFragment.newInstance())
-            .commit()
-    }
-
-    private fun openFavorites() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, FavoritesFragment.newInstance())
-            .commit()
-    }
-
-    private fun openAccount() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, AccountFragment.newInstance())
-            .commit()
+    private fun showBottomNavigation(isVisible: Boolean) {
+        bottomNavigationView.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 }
