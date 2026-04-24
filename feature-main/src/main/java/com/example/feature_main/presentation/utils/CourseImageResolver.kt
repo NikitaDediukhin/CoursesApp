@@ -1,4 +1,4 @@
-package com.example.feature_main.presentation
+package com.example.feature_main.presentation.utils
 
 import com.example.core_ui.R
 import kotlin.math.absoluteValue

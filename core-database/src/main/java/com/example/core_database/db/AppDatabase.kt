@@ -3,7 +3,7 @@ package com.example.core_database.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.core_database.dao.CoursesDao
-import com.example.core_database.model.CourseEntity
+import com.example.core_database.entity.CourseEntity
 
 @Database(
     entities = [CourseEntity::class],

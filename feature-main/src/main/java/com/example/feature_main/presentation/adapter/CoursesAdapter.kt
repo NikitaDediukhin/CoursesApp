@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.core_ui.R
 import com.example.feature_main.databinding.ItemCourseBinding
 import com.example.feature_main.domain.model.Course
-import com.example.feature_main.presentation.resolveCourseImage
+import com.example.feature_main.presentation.utils.resolveCourseImage
 import com.example.feature_main.presentation.utils.formatCourseDate
 
 class CoursesAdapter(

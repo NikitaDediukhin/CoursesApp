@@ -1,6 +1,6 @@
 package com.example.feature_main.data.mapper
 
-import com.example.core_database.model.CourseEntity
+import com.example.core_database.entity.CourseEntity
 import com.example.core_network.dto.CourseDto
 import com.example.feature_main.domain.model.Course
 
