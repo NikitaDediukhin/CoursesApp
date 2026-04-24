@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -27,11 +28,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    buildFeatures {
+        viewBinding = true
+    }
+}
+kotlin {
+    compilerOptions {
+        jvmToolchain(17)
     }
 }
 
@@ -45,4 +51,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
+    implementation(project(":feature-login"))
+    implementation(project(":feature-main"))
+    implementation(project(":core-ui"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
 }

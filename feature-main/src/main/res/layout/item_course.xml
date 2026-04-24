@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/course_card_height"
+    android:layout_marginBottom="@dimen/space_16"
+    android:background="@drawable/bg_course_card">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/imageBottomGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/course_image_height" />
+
+    <eightbitlab.com.blurview.BlurTarget
+        android:id="@+id/blurTarget"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/courseImageView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/course_image_height"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayAppCourseImage"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/course_placeholder_1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bottomContent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="@dimen/space_16"
+                android:paddingTop="@dimen/space_16"
+                android:paddingEnd="@dimen/space_12"
+                android:paddingBottom="@dimen/space_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/courseImageView">
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.App.TitleMedium"
+                    android:textColor="@color/text_primary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Java-разработчик с нуля" />
+
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/course_description_height"
+                    android:layout_marginTop="@dimen/space_12"
+                    android:alpha="0.7"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextAppearance.App.BodySmall"
+                    android:textColor="@color/text_primary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleTextView"
+                    tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven..." />
+
+                <TextView
+                    android:id="@+id/priceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.App.TitleMedium"
+                    android:textColor="@color/text_primary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="999 ₽" />
+
+                <LinearLayout
+                    android:id="@+id/moreContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@id/priceTextView"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/moreTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="@string/more"
+                        android:textAppearance="@style/TextAppearance.App.ButtonSmall"
+                        android:textColor="@color/accent_primary" />
+
+                    <ImageView
+                        android:id="@+id/moreArrowImageView"
+                        android:layout_width="@dimen/icon_size_m"
+                        android:layout_height="@dimen/icon_size_m"
+                        android:src="@drawable/arrow_right_short_fill"
+                        app:tint="@color/accent_primary"
+                        tools:ignore="ContentDescription" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </eightbitlab.com.blurview.BlurTarget>
+
+    <LinearLayout
+        android:id="@+id/metaRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_8"
+        android:layout_marginBottom="@dimen/space_8"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/imageBottomGuideline"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <eightbitlab.com.blurview.BlurView
+            android:id="@+id/ratingBlurView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/chip_height"
+            android:background="@drawable/bg_course_chip"
+            android:clipToOutline="true">
+
+            <LinearLayout
+                android:id="@+id/ratingChip"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/space_6"
+                android:paddingEnd="@dimen/space_6">
+
+                <ImageView
+                    android:id="@+id/ratingStarImageView"
+                    android:layout_width="@dimen/icon_size_s"
+                    android:layout_height="@dimen/icon_size_s"
+                    android:layout_marginEnd="@dimen/space_4"
+                    android:src="@drawable/star_fill"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/rateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.App.Caption"
+                    android:textColor="@color/text_primary"
+                    tools:text="4.9" />
+
+            </LinearLayout>
+
+        </eightbitlab.com.blurview.BlurView>
+
+        <eightbitlab.com.blurview.BlurView
+            android:id="@+id/dateBlurView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/chip_height"
+            android:layout_marginStart="@dimen/space_4"
+            android:background="@drawable/bg_course_chip"
+            android:clipToOutline="true">
+
+            <TextView
+                android:id="@+id/startDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_height"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/space_6"
+                android:paddingEnd="@dimen/space_6"
+                android:textAppearance="@style/TextAppearance.App.Caption"
+                android:textColor="@color/text_primary"
+                tools:text="22 Мая 2024" />
+
+        </eightbitlab.com.blurview.BlurView>
+
+    </LinearLayout>
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/bookmarkBlurView"
+        android:layout_width="@dimen/bookmark_button_size"
+        android:layout_height="@dimen/bookmark_button_size"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_marginEnd="@dimen/space_8"
+        android:background="@drawable/bg_bookmark_button"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/likeButton"
+            style="@style/AppButtonSocialIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:contentDescription="@string/bookmark"
+            app:srcCompat="@drawable/ic_bookmark_filled" />
+
+    </eightbitlab.com.blurview.BlurView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

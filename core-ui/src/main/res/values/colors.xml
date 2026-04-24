@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base -->
+    <color name="bg_primary">#151515</color>
+    <color name="surface_primary">#24252A</color>
+    <color name="text_primary">#F2F2F3</color>
+    <color name="text_secondary">#4D555E</color>
+    <color name="text_hint">#80F2F2F3</color>
+    <color name="text_disabled">#66F2F2F3</color>
+
+    <!-- Accent -->
+    <color name="accent_primary">#12B956</color>
+
+    <!-- Border / stroke -->
+    <color name="border_default">#4D555E</color>
+
+    <!-- Overlay -->
+    <color name="glass_overlay">#32333A4D</color>
+
+    <!-- Brand -->
+    <color name="brand_vk">#2683ED</color>
+    <color name="brand_ok_start">#F98509</color>
+    <color name="brand_ok_end">#F95D00</color>
+
+    <!-- Utility -->
+    <color name="transparent">#00000000</color>
+</resources>

@@ -16,8 +16,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
     }
 }
 
 rootProject.name = "CoursesApp"
 include(":app")
+include(":core-ui")
+include(":feature-login")
+include(":feature-main")
+include(":core-network")
+include(":core-database")

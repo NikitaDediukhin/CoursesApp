@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent_primary</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+
+        <item name="colorSurface">@color/surface_primary</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <item name="android:colorBackground">@color/bg_primary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+
+        <item name="android:statusBarColor">@color/bg_primary</item>
+        <item name="android:navigationBarColor">@color/surface_primary</item>
+
+        <item name="materialButtonStyle">@style/Widget.App.Button.Primary</item>
+    </style>
+
+</resources>
