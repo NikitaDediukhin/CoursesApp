@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.feature_main.databinding.FragmentMainBinding
 import com.example.feature_main.di.MainComponentViewModel
@@ -48,12 +50,14 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
-
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
+        setupRecyclerView()
         observeState()
+        setupClicks()
+    }
 
+    private fun setupClicks() {
         binding.sortButton.setOnClickListener {
             viewModel.onSortClick()
         }
@@ -74,14 +78,21 @@ class MainFragment : Fragment() {
 
     private fun observeState() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.uiState.collect { state ->
-                binding.progressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
-                binding.errorTextView.visibility = if (state.error != null) View.VISIBLE else View.GONE
-                binding.errorTextView.text = state.error.orEmpty()
-
-                coursesAdapter.submitList(state.courses)
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    renderState(state)
+                }
             }
         }
+    }
+
+    private fun renderState(state: MainUiState) = with(binding) {
+        progressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
+
+        errorTextView.visibility = if (state.error != null) View.VISIBLE else View.GONE
+        errorTextView.text = state.error.orEmpty()
+
+        coursesAdapter.submitList(state.courses)
     }
 
     override fun onDestroyView() {
