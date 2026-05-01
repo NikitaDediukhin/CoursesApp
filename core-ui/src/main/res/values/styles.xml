@@ -125,8 +125,8 @@
 
     <style name="Widget.App.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:background">@drawable/bg_bottom_navigation</item>
-        <item name="itemIconTint">@color/text_primary</item>
-        <item name="itemTextColor">@color/text_primary</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
         <item name="itemTextAppearanceActive">@style/AppTextAppearanceBottomNav</item>
         <item name="itemTextAppearanceInactive">@style/AppTextAppearanceBottomNav</item>
         <item name="labelVisibilityMode">labeled</item>
