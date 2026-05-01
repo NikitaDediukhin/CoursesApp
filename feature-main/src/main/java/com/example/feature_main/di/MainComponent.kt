@@ -1,7 +1,7 @@
 package com.example.feature_main.di
 
-import com.example.feature_main.presentation.FavoritesFragment
-import com.example.feature_main.presentation.MainFragment
+import com.example.feature_main.presentation.favourites.FavoritesFragment
+import com.example.feature_main.presentation.main.MainFragment
 import dagger.Component
 
 @MainFeatureScope

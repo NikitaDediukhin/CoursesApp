@@ -1,4 +1,4 @@
-package com.example.feature_main.presentation
+package com.example.feature_main.presentation.main
 
 import android.content.Context
 import android.os.Bundle

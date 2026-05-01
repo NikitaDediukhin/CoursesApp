@@ -1,4 +1,4 @@
-package com.example.feature_main.presentation
+package com.example.feature_main.presentation.main
 
 import com.example.feature_main.domain.model.Course
 

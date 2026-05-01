@@ -1,4 +1,4 @@
-package com.example.feature_main.presentation
+package com.example.feature_main.presentation.favourites
 
 import android.content.Context
 import android.os.Bundle
@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.feature_main.databinding.FragmentFavoritesBinding
-import com.example.feature_main.databinding.FragmentMainBinding
 import com.example.feature_main.di.MainComponentViewModel
 import com.example.feature_main.presentation.adapter.CoursesAdapter
+import com.example.feature_main.presentation.main.MainViewModelFactory
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,7 +27,7 @@ class FavoritesFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: MainViewModelFactory
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: FavoritesViewModel
     private lateinit var coursesAdapter: CoursesAdapter
 
     override fun onAttach(context: Context) {
@@ -58,13 +58,13 @@ class FavoritesFragment : Fragment() {
         binding.favoritesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.favoritesRecyclerView.adapter = coursesAdapter
 
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[FavoritesViewModel::class.java]
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.uiState.collect { state ->
-                val favorites = state.courses.filter { it.hasLike }
+            viewModel.courses.collect { favorites ->
                 binding.emptyTextView.visibility =
                     if (favorites.isEmpty()) View.VISIBLE else View.GONE
+
                 coursesAdapter.submitList(favorites)
             }
         }
