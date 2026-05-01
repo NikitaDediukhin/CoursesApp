@@ -13,6 +13,9 @@ interface CoursesDao {
     @Query("SELECT * FROM courses")
     fun observeCourses(): Flow<List<CourseEntity>>
 
+    @Query("SELECT * FROM courses")
+    suspend fun getCoursesOnce(): List<CourseEntity>
+
     @Query("SELECT * FROM courses WHERE hasLike = 1")
     fun observeFavoriteCourses(): Flow<List<CourseEntity>>
 

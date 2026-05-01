@@ -29,7 +29,18 @@ class CoursesRepositoryImpl @Inject constructor(
 
     override suspend fun syncCourses() {
         val response = coursesApi.getCourses()
-        coursesDao.insertCourses(response.courses.map { it.toEntity() })
+
+        val localCourses = coursesDao.getCoursesOnce()
+        val localLikeById = localCourses.associate { it.id to it.hasLike }
+
+        val entities = response.courses.map { dto ->
+            val entity = dto.toEntity()
+            entity.copy(
+                hasLike = localLikeById[entity.id] ?: entity.hasLike
+            )
+        }
+
+        coursesDao.insertCourses(entities)
     }
 
     override suspend fun toggleFavorite(courseId: Int, hasLike: Boolean) {
