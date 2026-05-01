@@ -22,6 +22,8 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
+    private var isSortedByPublishDate = false
+
     init {
         observeCourses()
         syncCourses()
@@ -43,7 +45,7 @@ class MainViewModel @Inject constructor(
                 .collect { courses ->
                     _uiState.value = _uiState.value.copy(
                         isLoading = false,
-                        courses = courses,
+                        courses = applySorting(courses),
                         error = null
                     )
                 }
@@ -80,7 +82,18 @@ class MainViewModel @Inject constructor(
     }
 
     fun onSortClick() {
-        val sortedCourses = _uiState.value.courses.sortedByDescending { it.publishDate }
-        _uiState.value = _uiState.value.copy(courses = sortedCourses)
+        isSortedByPublishDate = true
+
+        _uiState.value = _uiState.value.copy(
+            courses = applySorting(_uiState.value.courses)
+        )
+    }
+
+    private fun applySorting(courses: List<Course>): List<Course> {
+        return if (isSortedByPublishDate) {
+            courses.sortedByDescending { it.publishDate }
+        } else {
+            courses
+        }
     }
 }
