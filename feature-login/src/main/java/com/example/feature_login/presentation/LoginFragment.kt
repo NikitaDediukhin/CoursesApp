@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -58,6 +59,9 @@ class LoginFragment : Fragment() {
     }
 
     private fun setupInputs() {
+        binding.emailEditText.filters =
+            binding.emailEditText.filters + cyrillicInputFilter
+
         binding.emailEditText.addTextChangedListener(textWatcher)
         binding.passwordEditText.addTextChangedListener(textWatcher)
     }
@@ -90,8 +94,16 @@ class LoginFragment : Fragment() {
                 Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
+    private val cyrillicInputFilter = InputFilter { source, _, _, _, _, _ ->
+        source.filterNot { it.isCyrillic() }
+    }
+
     private fun String.containsCyrillic(): Boolean {
-        return any { it in 'А'..'я' || it == 'ё' || it == 'Ё' }
+        return any { it.isCyrillic() }
+    }
+
+    private fun Char.isCyrillic(): Boolean {
+        return Character.UnicodeBlock.of(this) == Character.UnicodeBlock.CYRILLIC
     }
 
     private fun openUrl(url: String) {
